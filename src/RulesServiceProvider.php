@@ -2,9 +2,9 @@
 
 namespace Soyhuce\Rules;
 
+use Soyhuce\Rules\Commands\RulesCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Soyhuce\Rules\Commands\RulesCommand;
 
 class RulesServiceProvider extends PackageServiceProvider
 {
