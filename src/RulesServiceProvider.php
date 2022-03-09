@@ -2,24 +2,27 @@
 
 namespace Soyhuce\Rules;
 
-use Soyhuce\Rules\Commands\RulesCommand;
-use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Illuminate\Contracts\Support\DeferrableProvider;
+use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
+use Soyhuce\Rules\Database\DatabaseBoolean;
+use Soyhuce\Rules\Database\DatabaseRange;
 
-class RulesServiceProvider extends PackageServiceProvider
+class RulesServiceProvider extends IlluminateServiceProvider implements DeferrableProvider
 {
-    public function configurePackage(Package $package): void
+    public function register(): void
     {
-        /*
-         * This class is a Package Service Provider
-         *
-         * More info: https://github.com/spatie/laravel-package-tools
-         */
-        $package
-            ->name('laravel-validation-rules')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravel-validation-rules_table')
-            ->hasCommand(RulesCommand::class);
+        $this->app->singleton(DatabaseBoolean::class, fn () => new DatabaseBoolean());
+        $this->app->singleton(DatabaseRange::class, fn () => new DatabaseRange());
+    }
+
+    /**
+     * @return array<string>
+     */
+    public function provides(): array
+    {
+        return [
+            DatabaseBoolean::class,
+            DatabaseRange::class,
+        ];
     }
 }
