@@ -6,7 +6,17 @@
 [![GitHub PHPStan Action Status](https://img.shields.io/github/workflow/status/soyhuce/laravel-validation-rules/PHPStan?label=phpstan)](https://github.com/soyhuce/laravel-validation-rules/actions?query=workflow%3APHPStan+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/soyhuce/laravel-validation-rules.svg?style=flat-square)](https://packagist.org/packages/soyhuce/laravel-validation-rules)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+Main objective of this package is to provide a set of validation rules for Laravel in order to make it easier to write validation.
+
+```php
+Validator::make($data, rules([
+	'email' => ['required', DbRules::string()], // ['required', 'string', 'max:255']
+	'smaller' => ['nullable', DbRules::string(20)], // ['nullable', 'string', 'max:20']
+	'birthday' => [DbRules::date()], // ['date_format:Y-m-d']
+	'tiny' => [DbRules::tinyInteger()], // ['integer', 'min:-128', 'max:127']
+	// ...
+]));
+```
 
 ## Installation
 
@@ -16,37 +26,51 @@ You can install the package via composer:
 composer require soyhuce/laravel-validation-rules
 ```
 
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="laravel-validation-rules-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="laravel-validation-rules-config"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="laravel-validation-rules-views"
-```
-
 ## Usage
 
-```php
-$rules = new Soyhuce\Rules();
-echo $rules->echoPhrase('Hello, Soyhuce!');
+### Available Rules
+
+Database related rules :
+- `DbRules::string`
+- `DbRules::boolean`
+- `DbRules::enum`
+- `DbRules::date`
+- `DbRules::dateTime`
+- `DbRules::tinyInteger`
+- `DbRules::unsignedTinyInteger`
+- `DbRules::smallInteger`
+- `DbRules::unsignedSmallInteger`
+- `DbRules::mediumInteger`
+- `DbRules::unsignedMediumInteger`
+- `DbRules::integer`
+- `DbRules::unsignedInteger`
+- `DbRules::bigInteger`
+- `DbRules::unsignedBigInteger`
+- `DbRules::smallIncrements`
+- `DbRules::mediumIncrements`
+- `DbRules::increments`
+- `DbRules::bigIncrements`
+- `DbRules::float`
+- `DbRules::double`
+
+Miscellaneous rules :
+
+- `MisRules::safePassword` : GDPR/CNIL compatible password (at least 12 characters)
+- `MisRules::mediumPassword` : GDPR/CNIL compatible password (at least 8 characters)
+
+### Using in conditional `Rule::when`
+
+Rules extending `CompoundRule` cannot be used directly in `Rule::when`.
+
+You will need to use `...` in this case :
+
+```diff
+'commission_account' => Rule::when(
+    fn(Fluent $data) => $data->get('commission') !== null,
+-   ['required', DbRules::string()],
++   ['required', ...DbRules::string()],
+    'exclude'
+),
 ```
 
 ## Testing
