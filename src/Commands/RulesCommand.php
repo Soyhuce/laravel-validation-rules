@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace VendorName\Skeleton\Commands;
+namespace Soyhuce\Rules\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class RulesCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-validation-rules';
 
     public $description = 'My command';
 
