@@ -3,22 +3,16 @@
 namespace Soyhuce\Rules\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
-use Soyhuce\Rules\Concerns\ActAsValidator;
+use Illuminate\Support\Facades\Validator;
 use Soyhuce\Rules\Concerns\DatabaseRelatedRule;
 use function in_array;
 use function is_array;
 
 class DbBoolean implements Rule
 {
-    use ActAsValidator;
     use DatabaseRelatedRule;
 
     private string $attribute;
-
-    public function __construct()
-    {
-        $this->bootActAsValidator();
-    }
 
     /**
      * Determine if the validation rule passes.
@@ -36,6 +30,9 @@ class DbBoolean implements Rule
 
     public function message(): string
     {
-        return $this->getMessage($this->attribute, 'boolean');
+        $validator = Validator::make([], []);
+        $validator->addFailure($this->attribute, 'boolean');
+
+        return $validator->errors()->first($this->attribute);
     }
 }
