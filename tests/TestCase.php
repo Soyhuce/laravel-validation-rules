@@ -2,6 +2,7 @@
 
 namespace Soyhuce\Rules\Tests;
 
+use Illuminate\Foundation\Testing\Concerns\InteractsWithDeprecationHandling;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Soyhuce\Rules\RulesServiceProvider;
 
@@ -10,6 +11,15 @@ use Soyhuce\Rules\RulesServiceProvider;
  */
 class TestCase extends Orchestra
 {
+    use InteractsWithDeprecationHandling;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->withoutDeprecationHandling();
+    }
+
     protected function getPackageProviders($app)
     {
         return [
