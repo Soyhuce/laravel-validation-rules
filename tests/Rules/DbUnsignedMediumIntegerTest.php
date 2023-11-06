@@ -18,9 +18,9 @@ class DbUnsignedMediumIntegerTest extends RuleTestCase
     {
         $this->assertValidates(10, new DbUnsignedMediumInteger());
         $this->assertValidates(0, new DbUnsignedMediumInteger());
-        $this->assertValidates(16777215, new DbUnsignedMediumInteger());
+        $this->assertValidates(16_777_215, new DbUnsignedMediumInteger());
         $this->assertNotValidates(-1, new DbUnsignedMediumInteger());
-        $this->assertNotValidates(16777216, new DbUnsignedMediumInteger());
+        $this->assertNotValidates(16_777_216, new DbUnsignedMediumInteger());
 
         $this->assertNotValidates([], new DbUnsignedMediumInteger());
         $this->assertNotValidates(UploadedFile::fake()->create('file'), new DbUnsignedMediumInteger());
@@ -41,7 +41,7 @@ class DbUnsignedMediumIntegerTest extends RuleTestCase
             [trans('validation.min.numeric', ['attribute' => 'test', 'min' => '0'])]
         );
         $this->assertFailsWithMessage(
-            16777216,
+            16_777_216,
             new DbUnsignedMediumInteger(),
             [trans('validation.max.numeric', ['attribute' => 'test', 'max' => '16777215'])]
         );

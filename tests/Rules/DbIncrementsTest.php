@@ -19,9 +19,9 @@ class DbIncrementsTest extends RuleTestCase
     {
         $this->assertValidates(10, new DbIncrements());
         $this->assertValidates(1, new DbIncrements());
-        $this->assertValidates(4294967295, new DbIncrements());
+        $this->assertValidates(4_294_967_295, new DbIncrements());
         $this->assertNotValidates(0, new DbIncrements());
-        $this->assertNotValidates(4294967296, new DbIncrements());
+        $this->assertNotValidates(4_294_967_296, new DbIncrements());
 
         $this->assertNotValidates([], new DbIncrements());
         $this->assertNotValidates(UploadedFile::fake()->create('file'), new DbIncrements());
@@ -43,7 +43,7 @@ class DbIncrementsTest extends RuleTestCase
         );
 
         $this->assertFailsWithMessage(
-            4294967296,
+            4_294_967_296,
             new DbIncrements(),
             [trans('validation.max.numeric', ['attribute' => 'test', 'max' => '4294967295'])]
         );
@@ -95,6 +95,6 @@ class DbIncrementsTest extends RuleTestCase
     {
         $this->expectException(ValueOutOfRange::class);
 
-        new DbIncrements(max: 4294967296);
+        new DbIncrements(max: 4_294_967_296);
     }
 }

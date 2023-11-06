@@ -17,10 +17,10 @@ class DbIntegerTest extends RuleTestCase
     public function theRuleCorrectlyValidates(): void
     {
         $this->assertValidates(10, new DbInteger());
-        $this->assertValidates(-2147483648, new DbInteger());
-        $this->assertValidates(2147483647, new DbInteger());
-        $this->assertNotValidates(-2147483649, new DbInteger());
-        $this->assertNotValidates(2147483648, new DbInteger());
+        $this->assertValidates(-2_147_483_648, new DbInteger());
+        $this->assertValidates(2_147_483_647, new DbInteger());
+        $this->assertNotValidates(-2_147_483_649, new DbInteger());
+        $this->assertNotValidates(2_147_483_648, new DbInteger());
 
         $this->assertNotValidates([], new DbInteger());
         $this->assertNotValidates(UploadedFile::fake()->create('file'), new DbInteger());
@@ -36,12 +36,12 @@ class DbIntegerTest extends RuleTestCase
     public function messagesAreCorrectlyHandled(): void
     {
         $this->assertFailsWithMessage(
-            -2147483649,
+            -2_147_483_649,
             new DbInteger(),
             [trans('validation.min.numeric', ['attribute' => 'test', 'min' => '-2147483648'])]
         );
         $this->assertFailsWithMessage(
-            2147483648,
+            2_147_483_648,
             new DbInteger(),
             [trans('validation.max.numeric', ['attribute' => 'test', 'max' => '2147483647'])]
         );

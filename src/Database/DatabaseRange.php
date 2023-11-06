@@ -166,32 +166,32 @@ class DatabaseRange
 
     protected function minInt24(): int
     {
-        return -8388608; // -0x800000
+        return -8_388_608; // -0x800000
     }
 
     protected function maxInt24(): int
     {
-        return 8388607; // 0x7fffff
+        return 8_388_607; // 0x7fffff
     }
 
     protected function maxUInt24(): int
     {
-        return 16777215; // 0x00ffffff
+        return 16_777_215; // 0x00ffffff
     }
 
     protected function minInt32(): int
     {
-        return -2147483648; // -0x80000000
+        return -2_147_483_648; // -0x80000000
     }
 
     protected function maxInt32(): int
     {
-        return 2147483647; // 0x7fffffff
+        return 2_147_483_647; // 0x7fffffff
     }
 
     protected function maxUInt32(): int
     {
-        return 4294967295; // 0x00ffffffff
+        return 4_294_967_295; // 0x00ffffffff
     }
 
     protected function minFloat(): float
@@ -208,11 +208,11 @@ class DatabaseRange
     {
         // should be -9223372036854775808 but easier to exclude this value
         // because php transforms -9223372036854775808 to -9.2233720368548E+18
-        return -9223372036854775807;
+        return -9_223_372_036_854_775_807;
     }
 
     protected function maxInt64(): int
     {
-        return 9223372036854775807;
+        return 9_223_372_036_854_775_807;
     }
 }

@@ -91,7 +91,7 @@ class SafePasswordTest extends RuleTestCase
         $validator = Validator::make(
             ['test' => '123456789012'],
             ['test' => new SafePassword()],
-            customAttributes: ['test' => 'password']
+            attributes: ['test' => 'password']
         );
 
         $this->assertFalse($validator->passes());

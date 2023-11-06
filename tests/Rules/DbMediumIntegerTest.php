@@ -17,10 +17,10 @@ class DbMediumIntegerTest extends RuleTestCase
     public function theRuleCorrectlyValidates(): void
     {
         $this->assertValidates(10, new DbMediumInteger());
-        $this->assertValidates(-8388608, new DbMediumInteger());
-        $this->assertValidates(8388607, new DbMediumInteger());
-        $this->assertNotValidates(-8388609, new DbMediumInteger());
-        $this->assertNotValidates(8388608, new DbMediumInteger());
+        $this->assertValidates(-8_388_608, new DbMediumInteger());
+        $this->assertValidates(8_388_607, new DbMediumInteger());
+        $this->assertNotValidates(-8_388_609, new DbMediumInteger());
+        $this->assertNotValidates(8_388_608, new DbMediumInteger());
 
         $this->assertNotValidates([], new DbMediumInteger());
         $this->assertNotValidates(UploadedFile::fake()->create('file'), new DbMediumInteger());
@@ -36,12 +36,12 @@ class DbMediumIntegerTest extends RuleTestCase
     public function messagesAreCorrectlyHandled(): void
     {
         $this->assertFailsWithMessage(
-            -8388609,
+            -8_388_609,
             new DbMediumInteger(),
             [trans('validation.min.numeric', ['attribute' => 'test', 'min' => '-8388608'])]
         );
         $this->assertFailsWithMessage(
-            8388608,
+            8_388_608,
             new DbMediumInteger(),
             [trans('validation.max.numeric', ['attribute' => 'test', 'max' => '8388607'])]
         );

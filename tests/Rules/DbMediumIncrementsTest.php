@@ -18,9 +18,9 @@ class DbMediumIncrementsTest extends RuleTestCase
     {
         $this->assertValidates(10, new DbMediumIncrements());
         $this->assertValidates(1, new DbMediumIncrements());
-        $this->assertValidates(16777215, new DbMediumIncrements());
+        $this->assertValidates(16_777_215, new DbMediumIncrements());
         $this->assertNotValidates(0, new DbMediumIncrements());
-        $this->assertNotValidates(16777216, new DbMediumIncrements());
+        $this->assertNotValidates(16_777_216, new DbMediumIncrements());
 
         $this->assertNotValidates([], new DbMediumIncrements());
         $this->assertNotValidates(UploadedFile::fake()->create('file'), new DbMediumIncrements());
@@ -41,7 +41,7 @@ class DbMediumIncrementsTest extends RuleTestCase
             [trans('validation.min.numeric', ['attribute' => 'test', 'min' => '1'])]
         );
         $this->assertFailsWithMessage(
-            16777216,
+            16_777_216,
             new DbMediumIncrements(),
             [trans('validation.max.numeric', ['attribute' => 'test', 'max' => '16777215'])]
         );
