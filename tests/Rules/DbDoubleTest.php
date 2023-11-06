@@ -18,7 +18,7 @@ class DbDoubleTest extends RuleTestCase
     public function theRuleIsNotImplemented(): void
     {
         $this->expectException(Unimplemented::class);
-        $this->expectErrorMessage(sprintf('Method %s::double is not yet implemented', DatabaseRange::class));
+        $this->expectExceptionMessage(sprintf('Method %s::double is not yet implemented', DatabaseRange::class));
 
         $this->assertValidates(10, new DbDouble());
     }
@@ -29,7 +29,7 @@ class DbDoubleTest extends RuleTestCase
     public function helperCanBeUsed(): void
     {
         $this->expectException(Unimplemented::class);
-        $this->expectErrorMessage(sprintf('Method %s::double is not yet implemented', DatabaseRange::class));
+        $this->expectExceptionMessage(sprintf('Method %s::double is not yet implemented', DatabaseRange::class));
 
         $this->assertValidates(10, DbRules::double());
     }
