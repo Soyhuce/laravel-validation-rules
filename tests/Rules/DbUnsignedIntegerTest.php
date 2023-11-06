@@ -18,9 +18,9 @@ class DbUnsignedIntegerTest extends RuleTestCase
     {
         $this->assertValidates(10, new DbUnsignedInteger());
         $this->assertValidates(0, new DbUnsignedInteger());
-        $this->assertValidates(4294967295, new DbUnsignedInteger());
+        $this->assertValidates(4_294_967_295, new DbUnsignedInteger());
         $this->assertNotValidates(-1, new DbUnsignedInteger());
-        $this->assertNotValidates(4294967296, new DbUnsignedInteger());
+        $this->assertNotValidates(4_294_967_296, new DbUnsignedInteger());
 
         $this->assertNotValidates([], new DbUnsignedInteger());
         $this->assertNotValidates(UploadedFile::fake()->create('file'), new DbUnsignedInteger());
@@ -41,7 +41,7 @@ class DbUnsignedIntegerTest extends RuleTestCase
             [trans('validation.min.numeric', ['attribute' => 'test', 'min' => '0'])]
         );
         $this->assertFailsWithMessage(
-            4294967296,
+            4_294_967_296,
             new DbUnsignedInteger(),
             [trans('validation.max.numeric', ['attribute' => 'test', 'max' => '4294967295'])]
         );

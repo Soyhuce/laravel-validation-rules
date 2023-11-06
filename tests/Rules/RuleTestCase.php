@@ -12,11 +12,9 @@ use Soyhuce\Rules\Tests\TestCase;
 class RuleTestCase extends TestCase
 {
     /**
-     * @param mixed $value
-     * @param mixed $rule
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function makeValidator($value, $rule)
+    protected function makeValidator(mixed $value, mixed $rule)
     {
         return Validator::make(['test' => $value], ['test' => $rule]);
     }

@@ -16,7 +16,7 @@ class DbBigIncrementsTest extends RuleTestCase
     public function theRuleCorrectlyValidates(): void
     {
         $this->assertValidates(10, new DbBigIncrements());
-        $this->assertValidates(9223372036854775807, new DbBigIncrements());
+        $this->assertValidates(9_223_372_036_854_775_807, new DbBigIncrements());
         $this->assertValidates('9223372036854775807', new DbBigIncrements());
         $this->assertNotValidates('9223372036854775808', new DbBigIncrements());
 

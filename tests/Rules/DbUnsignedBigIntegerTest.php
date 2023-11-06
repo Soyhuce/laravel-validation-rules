@@ -16,7 +16,7 @@ class DbUnsignedBigIntegerTest extends RuleTestCase
     public function theRuleCorrectlyValidates(): void
     {
         $this->assertValidates(10, new DbUnsignedBigInteger());
-        $this->assertValidates(9223372036854775807, new DbUnsignedBigInteger());
+        $this->assertValidates(9_223_372_036_854_775_807, new DbUnsignedBigInteger());
         $this->assertValidates('9223372036854775807', new DbUnsignedBigInteger());
         $this->assertNotValidates('9223372036854775808', new DbUnsignedBigInteger());
 
