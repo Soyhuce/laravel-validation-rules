@@ -15,30 +15,17 @@ class DbBoolean implements ValidationRule
 
     private string $attribute;
 
-    /**
-     * Determine if the validation rule passes.
-     *
-     * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
-     */
-    public function passes(string $attribute, mixed $value): bool
+    public function validate(string $attribute, mixed $value, Closure $fail): void
     {
         $this->attribute = $attribute;
 
-        return !is_array($value) && in_array($value, $this->booleans()->all(), true);
-    }
+        if (!is_array($value) && in_array($value, $this->booleans()->all(), true)) {
+            return;
+        }
 
-    public function message(): string
-    {
         $validator = Validator::make([], []);
         $validator->addFailure($this->attribute, 'boolean');
 
-        return $validator->errors()->first($this->attribute);
-    }
-
-    public function validate(string $attribute, mixed $value, Closure $fail): void
-    {
-        if (!$this->passes($attribute, $value)) {
-            $fail($this->message());
-        }
+        $fail($validator->errors()->first($this->attribute));
     }
 }
