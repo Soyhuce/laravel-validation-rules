@@ -13,19 +13,18 @@ class DbBoolean implements ValidationRule
 {
     use DatabaseRelatedRule;
 
-    private string $attribute;
-
+    /**
+     * @param Closure(string): \Illuminate\Translation\PotentiallyTranslatedString $fail
+     */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        $this->attribute = $attribute;
-
         if (!is_array($value) && in_array($value, $this->booleans()->all(), true)) {
             return;
         }
 
         $validator = Validator::make([], []);
-        $validator->addFailure($this->attribute, 'boolean');
+        $validator->addFailure($attribute, 'boolean');
 
-        $fail($validator->errors()->first($this->attribute));
+        $fail($validator->errors()->first($attribute));
     }
 }
