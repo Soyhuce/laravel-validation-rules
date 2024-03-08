@@ -12,7 +12,7 @@ use Soyhuce\Rules\Tests\TestCase;
 class RuleTestCase extends TestCase
 {
     /**
-     * @return \Illuminate\Contracts\Validation\Validator
+     * @return ValidatorContract
      */
     protected function makeValidator(mixed $value, mixed $rule)
     {
