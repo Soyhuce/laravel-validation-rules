@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-validation-rules` will be documented in this file.
 
+## 1.4.0 - 2024-03-08
+
+### What's Changed
+
+* Laravel 11 support by @EdenMl in https://github.com/Soyhuce/laravel-validation-rules/pull/19
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-validation-rules/compare/1.3.0...1.4.0
+
 ## 1.3.0 - 2023-11-24
 
 ### What's Changed
