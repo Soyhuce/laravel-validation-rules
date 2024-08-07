@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-validation-rules` will be documented in this file.
 
+## 1.5.0 - 2024-08-07
+
+### What's Changed
+
+* Respect custom attribute and messages from Validator in DbBoolean by @ElRochito in https://github.com/Soyhuce/laravel-validation-rules/pull/22
+
+### New Contributors
+
+* @ElRochito made their first contribution in https://github.com/Soyhuce/laravel-validation-rules/pull/22
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-validation-rules/compare/1.4.0...1.5.0
+
 ## 1.4.0 - 2024-03-08
 
 ### What's Changed
