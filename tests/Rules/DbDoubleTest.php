@@ -6,6 +6,7 @@ use Soyhuce\Rules\Database\DatabaseRange;
 use Soyhuce\Rules\DbRules;
 use Soyhuce\Rules\Exceptions\Unimplemented;
 use Soyhuce\Rules\Rules\DbDouble;
+use function sprintf;
 
 /**
  * @coversNothing
