@@ -2,29 +2,16 @@
 
 namespace Soyhuce\Rules\Rules;
 
-use Closure;
-use Illuminate\Contracts\Validation\ValidationRule;
-use Illuminate\Support\Facades\Validator;
 use Soyhuce\Rules\Concerns\DatabaseRelatedRule;
-use function in_array;
-use function is_array;
 
-class DbBoolean implements ValidationRule
+class DbBoolean extends CompoundRule
 {
     use DatabaseRelatedRule;
 
-    /**
-     * @param Closure(string): \Illuminate\Translation\PotentiallyTranslatedString $fail
-     */
-    public function validate(string $attribute, mixed $value, Closure $fail): void
+    public function __construct()
     {
-        if (!is_array($value) && in_array($value, $this->booleans()->all(), true)) {
-            return;
-        }
-
-        $validator = Validator::make([], []);
-        $validator->addFailure($attribute, 'boolean');
-
-        $fail($validator->errors()->first($attribute));
+        parent::__construct([
+            'in:' . implode(',', $this->booleans()->all()),
+        ]);
     }
 }

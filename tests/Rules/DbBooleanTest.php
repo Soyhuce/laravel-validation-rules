@@ -41,12 +41,12 @@ class DbBooleanTest extends RuleTestCase
      */
     public function messagesAreCorrectlyHandled(): void
     {
-        $this->assertFailsWithMessage('foo', new DbBoolean(), [trans('validation.boolean', ['attribute' => 'test'])]);
+        $this->assertFailsWithMessage('foo', new DbBoolean(), [trans('validation.in', ['attribute' => 'test'])]);
 
         trans()->addLines(['validation.attributes.test' => 'custom'], 'en');
-        $this->assertFailsWithMessage('foo', new DbBoolean(), ['The custom field must be true or false.']);
+        $this->assertFailsWithMessage('foo', new DbBoolean(), ['The selected custom is invalid.']);
 
-        trans()->addLines(['validation.custom.test.boolean' => 'It should be a boolean.'], 'en');
+        trans()->addLines(['validation.custom.test.in' => 'It should be a boolean.'], 'en');
         $this->assertFailsWithMessage('foo', new DbBoolean(), ['It should be a boolean.']);
     }
 

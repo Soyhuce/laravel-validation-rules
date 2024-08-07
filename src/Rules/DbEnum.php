@@ -2,6 +2,8 @@
 
 namespace Soyhuce\Rules\Rules;
 
+use function sprintf;
+
 class DbEnum extends CompoundRule
 {
     /**
