@@ -3,6 +3,7 @@
 namespace Soyhuce\Rules\Tests\Rules;
 
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Soyhuce\Rules\Database\DatabaseBoolean;
 use Soyhuce\Rules\DbRules;
@@ -41,13 +42,42 @@ class DbBooleanTest extends RuleTestCase
      */
     public function messagesAreCorrectlyHandled(): void
     {
-        $this->assertFailsWithMessage('foo', new DbBoolean(), [trans('validation.in', ['attribute' => 'test'])]);
+        $this->assertFailsWithMessage('foo', new DbBoolean(), [trans('validation.boolean', ['attribute' => 'test'])]);
 
         trans()->addLines(['validation.attributes.test' => 'custom'], 'en');
-        $this->assertFailsWithMessage('foo', new DbBoolean(), ['The selected custom is invalid.']);
+        $this->assertFailsWithMessage('foo', new DbBoolean(), ['The custom field must be true or false.']);
 
-        trans()->addLines(['validation.custom.test.in' => 'It should be a boolean.'], 'en');
+        trans()->addLines(['validation.custom.test.boolean' => 'It should be a boolean.'], 'en');
         $this->assertFailsWithMessage('foo', new DbBoolean(), ['It should be a boolean.']);
+    }
+
+    /**
+     * @test
+     */
+    public function messagesAndAttributesBecomesFromParentValidator(): void
+    {
+        $validator = Validator::make(
+            ['test' => 'not a boolean'],
+            ['test' => new DbBoolean()],
+            ['test.boolean' => 'my custom message'],
+        );
+
+        $this->assertEquals(
+            ['my custom message'],
+            tap($validator)->passes()->errors()->get('test')
+        );
+
+        $validator = Validator::make(
+            ['test' => 'not a boolean'],
+            ['test' => new DbBoolean()],
+            [],
+            ['test' => 'custom field'],
+        );
+
+        $this->assertEquals(
+            ['The custom field field must be true or false.'],
+            tap($validator)->passes()->errors()->get('test')
+        );
     }
 
     /**
