@@ -1,9 +1,9 @@
 # A set of useful validation rules for Laravel
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/soyhuce/laravel-validation-rules.svg?style=flat-square)](https://packagist.org/packages/soyhuce/laravel-validation-rules)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/soyhuce/laravel-validation-rules/run-tests?label=tests)](https://github.com/soyhuce/laravel-validation-rules/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/soyhuce/laravel-validation-rules/Check%20&%20fix%20styling?label=code%20style)](https://github.com/soyhuce/laravel-validation-rules/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
-[![GitHub PHPStan Action Status](https://img.shields.io/github/workflow/status/soyhuce/laravel-validation-rules/PHPStan?label=phpstan)](https://github.com/soyhuce/laravel-validation-rules/actions?query=workflow%3APHPStan+branch%3Amain)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/soyhuce/laravel-validation-rules/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/soyhuce/laravel-validation-rules/actions/workflows/run-tests.yml)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/soyhuce/laravel-validation-rules/phpstan.yml?branch=main&label=phpstan&style=flat-square)](https://github.com/soyhuce/laravel-validation-rules/actions/workflows/phpstan.yml)
+[![GitHub PHPStan Action Status](https://img.shields.io/github/actions/workflow/status/soyhuce/laravel-validation-rules/php-cs-fixer.yml?branch=main&label=php-cs-fixer&style=flat-square)](https://github.com/soyhuce/laravel-validation-rules/actions/workflows/php-cs-fixer.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/soyhuce/laravel-validation-rules.svg?style=flat-square)](https://packagist.org/packages/soyhuce/laravel-validation-rules)
 
 Main objective of this package is to provide a set of validation rules for Laravel in order to make it easier to write validation.
