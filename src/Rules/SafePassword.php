@@ -3,6 +3,7 @@
 namespace Soyhuce\Rules\Rules;
 
 use Soyhuce\Rules\Concerns\UsesSpecialChars;
+use function sprintf;
 
 class SafePassword extends CompoundRule
 {
