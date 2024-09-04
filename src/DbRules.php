@@ -23,6 +23,7 @@ use Soyhuce\Rules\Rules\DbUnsignedInteger;
 use Soyhuce\Rules\Rules\DbUnsignedMediumInteger;
 use Soyhuce\Rules\Rules\DbUnsignedSmallInteger;
 use Soyhuce\Rules\Rules\DbUnsignedTinyInteger;
+use Soyhuce\Rules\Rules\PendingDbEvery;
 
 class DbRules
 {
@@ -132,5 +133,10 @@ class DbRules
     public static function double(?float $min = null, ?float $max = null): DbDouble
     {
         return new DbDouble($min, $max);
+    }
+
+    public static function every(): PendingDbEvery
+    {
+        return new PendingDbEvery();
     }
 }
