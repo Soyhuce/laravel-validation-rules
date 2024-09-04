@@ -9,7 +9,7 @@ use Soyhuce\Rules\Rules\Every;
 use Soyhuce\Rules\Tests\Rules\RuleTestCase;
 
 /**
- * @coversNothing
+ * @covers \Soyhuce\Rules\Rules\Every
  */
 class EveryTest extends RuleTestCase
 {
