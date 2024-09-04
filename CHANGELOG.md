@@ -2,6 +2,16 @@
 
 All notable changes to `laravel-validation-rules` will be documented in this file.
 
+## 1.6.0 - 2024-09-04
+
+### What's Changed
+
+* Add Every validation rule to validate array items by @bastien-phi in https://github.com/Soyhuce/laravel-validation-rules/pull/23
+* Bump dependabot/fetch-metadata from 1.6.0 to 2.1.0 by @dependabot in https://github.com/Soyhuce/laravel-validation-rules/pull/21
+* Bump ramsey/composer-install from 2 to 3 by @dependabot in https://github.com/Soyhuce/laravel-validation-rules/pull/18
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-validation-rules/compare/1.5.0...1.6.0
+
 ## 1.5.0 - 2024-08-07
 
 ### What's Changed
