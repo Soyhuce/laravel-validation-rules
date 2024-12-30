@@ -1,6 +1,2 @@
 parameters:
-	ignoreErrors:
-		-
-			message: "#^Closure invoked with 2 parameters, 1 required\\.$#"
-			count: 2
-			path: src/Rules/Every.php
+	ignoreErrors: []
