@@ -2,6 +2,15 @@
 
 All notable changes to `laravel-validation-rules` will be documented in this file.
 
+## 2.0.0 - 2024-12-30
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.1.0 to 2.2.0 by @dependabot in https://github.com/Soyhuce/laravel-validation-rules/pull/24
+* Upgrade dependencies and php 8.4 by @bastien-phi in https://github.com/Soyhuce/laravel-validation-rules/pull/25
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-validation-rules/compare/1.6.0...2.0.0
+
 ## 1.6.0 - 2024-09-04
 
 ### What's Changed
