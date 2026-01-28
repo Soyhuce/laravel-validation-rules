@@ -3,19 +3,17 @@
 namespace Rules;
 
 use Illuminate\Http\UploadedFile;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use Soyhuce\Rules\MiscRules;
 use Soyhuce\Rules\Rules\DbUnsignedTinyInteger;
 use Soyhuce\Rules\Rules\Every;
 use Soyhuce\Rules\Tests\Rules\RuleTestCase;
 
-/**
- * @covers \Soyhuce\Rules\Rules\Every
- */
+#[CoversClass(Every::class)]
 class EveryTest extends RuleTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function theRuleCorrectlyValidates(): void
     {
         $this->assertValidates([10], new Every([new DbUnsignedTinyInteger()]));
@@ -38,9 +36,7 @@ class EveryTest extends RuleTestCase
         $this->assertNotValidates(null, ['required', 'array', new Every([new DbUnsignedTinyInteger()])]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function messagesAreCorrectlyHandled(): void
     {
         $this->assertFailsWithMessage(
@@ -50,9 +46,7 @@ class EveryTest extends RuleTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function subMessagesArePresent(): void
     {
         $this->assertEquals(
@@ -71,9 +65,7 @@ class EveryTest extends RuleTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function helperCanBeUsed(): void
     {
         $this->assertValidates([10], MiscRules::every(new DbUnsignedTinyInteger()));

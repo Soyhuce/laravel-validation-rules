@@ -2,20 +2,18 @@
 
 namespace Soyhuce\Rules\Tests\Rules;
 
+use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\Test;
 use Soyhuce\Rules\Database\DatabaseRange;
 use Soyhuce\Rules\DbRules;
 use Soyhuce\Rules\Exceptions\Unimplemented;
 use Soyhuce\Rules\Rules\DbDouble;
 use function sprintf;
 
-/**
- * @coversNothing
- */
+#[CoversNothing]
 class DbDoubleTest extends RuleTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function theRuleIsNotImplemented(): void
     {
         $this->expectException(Unimplemented::class);
@@ -24,9 +22,7 @@ class DbDoubleTest extends RuleTestCase
         $this->assertValidates(10, new DbDouble());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function helperCanBeUsed(): void
     {
         $this->expectException(Unimplemented::class);

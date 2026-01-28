@@ -5,18 +5,16 @@ namespace Soyhuce\Rules\Tests\Rules;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\Test;
 use Soyhuce\Rules\Database\DatabaseBoolean;
 use Soyhuce\Rules\DbRules;
 use Soyhuce\Rules\Rules\DbBoolean;
 
-/**
- * @coversNothing
- */
+#[CoversNothing]
 class DbBooleanTest extends RuleTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function theRuleCorrectlyValidates(): void
     {
         $this->assertValidates(0, new DbBoolean());
@@ -37,9 +35,7 @@ class DbBooleanTest extends RuleTestCase
         $this->assertNotValidates(null, ['required', new DbBoolean()]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function messagesAreCorrectlyHandled(): void
     {
         $this->assertFailsWithMessage('foo', new DbBoolean(), [trans('validation.boolean', ['attribute' => 'test'])]);
@@ -51,9 +47,7 @@ class DbBooleanTest extends RuleTestCase
         $this->assertFailsWithMessage('foo', new DbBoolean(), ['It should be a boolean.']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function messagesAndAttributesBecomesFromParentValidator(): void
     {
         $validator = Validator::make(
@@ -80,9 +74,7 @@ class DbBooleanTest extends RuleTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function helperCanBeUsed(): void
     {
         $this->assertValidates(true, DbRules::boolean());

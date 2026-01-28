@@ -2,17 +2,15 @@
 
 namespace Soyhuce\Rules\Tests\Rules;
 
+use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\Test;
 use Soyhuce\Rules\DbRules;
 use Soyhuce\Rules\Rules\DbBigIncrements;
 
-/**
- * @coversNothing
- */
+#[CoversNothing]
 class DbBigIncrementsTest extends RuleTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function theRuleCorrectlyValidates(): void
     {
         $this->assertValidates(10, new DbBigIncrements());
@@ -24,9 +22,7 @@ class DbBigIncrementsTest extends RuleTestCase
         $this->assertNotValidates(0, new DbBigIncrements());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function helperCanBeUsed(): void
     {
         $this->assertValidates(10, DbRules::bigIncrements());

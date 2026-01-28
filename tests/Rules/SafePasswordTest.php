@@ -3,17 +3,15 @@
 namespace Soyhuce\Rules\Tests\Rules;
 
 use Illuminate\Support\Facades\Validator;
+use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\Test;
 use Soyhuce\Rules\MiscRules;
 use Soyhuce\Rules\Rules\SafePassword;
 
-/**
- * @coversNothing
- */
+#[CoversNothing]
 class SafePasswordTest extends RuleTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function theRuleCorrectlyValidates(): void
     {
         $this->assertValidates('aZ^012345678', new SafePassword());
@@ -31,9 +29,7 @@ class SafePasswordTest extends RuleTestCase
         $this->assertNotValidates([], new SafePassword());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function messagesAreCorrectlyHandled(): void
     {
         $this->assertFailsWithMessage(
@@ -57,17 +53,13 @@ class SafePasswordTest extends RuleTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function helperCanBeUsed(): void
     {
         $this->assertValidates('aZ^012345678', MiscRules::safePassword());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function messagesCanBeOverrode(): void
     {
         $validator = Validator::make(
@@ -83,9 +75,7 @@ class SafePasswordTest extends RuleTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function attributesCanBeOverrode(): void
     {
         $validator = Validator::make(

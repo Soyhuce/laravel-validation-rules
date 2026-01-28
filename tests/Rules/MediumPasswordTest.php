@@ -2,17 +2,15 @@
 
 namespace Soyhuce\Rules\Tests\Rules;
 
+use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\Test;
 use Soyhuce\Rules\MiscRules;
 use Soyhuce\Rules\Rules\MediumPassword;
 
-/**
- * @coversNothing
- */
+#[CoversNothing]
 class MediumPasswordTest extends RuleTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function theRuleCorrectlyValidates(): void
     {
         $this->assertValidates('aZ^01234', new MediumPassword());
@@ -37,9 +35,7 @@ class MediumPasswordTest extends RuleTestCase
         $this->assertNotValidates([], new MediumPassword());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function messagesAreCorrectlyHandled(): void
     {
         $this->assertFailsWithMessage(
@@ -63,9 +59,7 @@ class MediumPasswordTest extends RuleTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function helperCanBeUsed(): void
     {
         $this->assertValidates('aZ^012345678', MiscRules::mediumPassword());

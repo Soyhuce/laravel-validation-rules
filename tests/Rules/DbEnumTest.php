@@ -3,17 +3,15 @@
 namespace Soyhuce\Rules\Tests\Rules;
 
 use Illuminate\Http\UploadedFile;
+use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\Test;
 use Soyhuce\Rules\DbRules;
 use Soyhuce\Rules\Rules\DbEnum;
 
-/**
- * @coversNothing
- */
+#[CoversNothing]
 class DbEnumTest extends RuleTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function theRuleCorrectlyValidates(): void
     {
         $this->assertValidates('foo', new DbEnum(['foo', 'bar']));
@@ -30,9 +28,7 @@ class DbEnumTest extends RuleTestCase
         $this->assertNotValidates(null, ['required', new DbEnum(['foo', 'bar'])]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function messagesAreCorrectlyHandled(): void
     {
         $this->assertFailsWithMessage(
@@ -58,9 +54,7 @@ class DbEnumTest extends RuleTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function helperCanBeUsed(): void
     {
         $this->assertValidates('foo', DbRules::enum(['foo', 'bar']));
