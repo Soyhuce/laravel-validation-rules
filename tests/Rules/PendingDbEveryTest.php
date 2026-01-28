@@ -3,11 +3,11 @@
 namespace Rules;
 
 use Illuminate\Validation\Rule;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use Soyhuce\Rules\DbRules;
 use Soyhuce\Rules\Rules\Every;
 use Soyhuce\Rules\Tests\Rules\RuleTestCase;
-use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Test;
 
 #[CoversClass(\Soyhuce\Rules\Rules\PendingDbEvery::class)]
 class PendingDbEveryTest extends RuleTestCase
