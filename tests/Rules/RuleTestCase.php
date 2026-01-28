@@ -4,11 +4,10 @@ namespace Soyhuce\Rules\Tests\Rules;
 
 use Illuminate\Contracts\Validation\Validator as ValidatorContract;
 use Illuminate\Support\Facades\Validator;
+use PHPUnit\Framework\Attributes\CoversNothing;
 use Soyhuce\Rules\Tests\TestCase;
 
-/**
- * @coversNothing
- */
+#[CoversNothing]
 class RuleTestCase extends TestCase
 {
     /**

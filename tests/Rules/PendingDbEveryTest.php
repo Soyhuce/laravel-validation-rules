@@ -6,15 +6,13 @@ use Illuminate\Validation\Rule;
 use Soyhuce\Rules\DbRules;
 use Soyhuce\Rules\Rules\Every;
 use Soyhuce\Rules\Tests\Rules\RuleTestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 
-/**
- * @covers \Soyhuce\Rules\Rules\PendingDbEvery
- */
+#[CoversClass(\Soyhuce\Rules\Rules\PendingDbEvery::class)]
 class PendingDbEveryTest extends RuleTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function theRuleCorrectlyValidates(): void
     {
         $this->assertValidates([10], DbRules::every()->unsignedTinyInteger());
@@ -37,9 +35,7 @@ class PendingDbEveryTest extends RuleTestCase
         $this->assertNotValidates(null, ['required', 'array', DbRules::every()->unsignedTinyInteger()]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function itDoesNotRunDatabaseValidationIfValueIsNotCorrect(): void
     {
         $this->assertNotValidates(

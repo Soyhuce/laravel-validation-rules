@@ -4,16 +4,14 @@ namespace Soyhuce\Rules\Tests\Rules;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use Soyhuce\Rules\Rules\CompoundRule;
 
-/**
- * @covers \Soyhuce\Rules\Rules\CompoundRule
- */
+#[CoversClass(CompoundRule::class)]
 class CompoundRuleTest extends RuleTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function indexesArraysAreCorrectlyValidated(): void
     {
         $rule = new class() extends CompoundRule {
@@ -31,9 +29,7 @@ class CompoundRuleTest extends RuleTestCase
         $this->assertFalse($validator->passes());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function typesAreCorrectlyInferred(): void
     {
         $rule = new class() extends CompoundRule {
@@ -51,9 +47,7 @@ class CompoundRuleTest extends RuleTestCase
         $this->assertFalse($validator->passes());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function compoundRulesCanBeUsedInConditionalRule(): void
     {
         $rule = new class() extends CompoundRule {
