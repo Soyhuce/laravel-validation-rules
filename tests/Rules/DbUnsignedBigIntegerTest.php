@@ -2,17 +2,15 @@
 
 namespace Soyhuce\Rules\Tests\Rules;
 
+use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\Test;
 use Soyhuce\Rules\DbRules;
 use Soyhuce\Rules\Rules\DbUnsignedBigInteger;
 
-/**
- * @coversNothing
- */
+#[CoversNothing]
 class DbUnsignedBigIntegerTest extends RuleTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function theRuleCorrectlyValidates(): void
     {
         $this->assertValidates(10, new DbUnsignedBigInteger());
@@ -24,9 +22,7 @@ class DbUnsignedBigIntegerTest extends RuleTestCase
         $this->assertNotValidates(-1, new DbUnsignedBigInteger());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function helperCanBeUsed(): void
     {
         $this->assertValidates(10, DbRules::unsignedBigInteger());

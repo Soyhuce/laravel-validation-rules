@@ -3,18 +3,16 @@
 namespace Soyhuce\Rules\Tests\Rules;
 
 use Illuminate\Http\UploadedFile;
+use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\Test;
 use Soyhuce\Rules\DbRules;
 use Soyhuce\Rules\Exceptions\ValueOutOfRange;
 use Soyhuce\Rules\Rules\DbIncrements;
 
-/**
- * @coversNothing
- */
+#[CoversNothing]
 class DbIncrementsTest extends RuleTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function theRuleCorrectlyValidates(): void
     {
         $this->assertValidates(10, new DbIncrements());
@@ -31,9 +29,7 @@ class DbIncrementsTest extends RuleTestCase
         $this->assertNotValidates(null, ['required', new DbIncrements()]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function messagesAreCorrectlyHandled(): void
     {
         $this->assertFailsWithMessage(
@@ -55,42 +51,32 @@ class DbIncrementsTest extends RuleTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function helperCanBeUsed(): void
     {
         $this->assertValidates(10, DbRules::increments());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function minCanBeOverrode(): void
     {
         $this->assertNotValidates(1, new DbIncrements(min: 2));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function maxCanBeOverrode(): void
     {
         $this->assertNotValidates(5, new DbIncrements(max: 3));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function minMustBeInActualRange(): void
     {
         $this->expectException(ValueOutOfRange::class);
         new DbIncrements(min: -2);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function maxMustBeInActualRange(): void
     {
         $this->expectException(ValueOutOfRange::class);

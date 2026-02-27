@@ -3,17 +3,15 @@
 namespace Soyhuce\Rules\Tests\Rules;
 
 use Illuminate\Http\UploadedFile;
+use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\Test;
 use Soyhuce\Rules\DbRules;
 use Soyhuce\Rules\Rules\DbMediumIncrements;
 
-/**
- * @coversNothing
- */
+#[CoversNothing]
 class DbMediumIncrementsTest extends RuleTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function theRuleCorrectlyValidates(): void
     {
         $this->assertValidates(10, new DbMediumIncrements());
@@ -30,9 +28,7 @@ class DbMediumIncrementsTest extends RuleTestCase
         $this->assertNotValidates(null, ['required', new DbMediumIncrements()]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function messagesAreCorrectlyHandled(): void
     {
         $this->assertFailsWithMessage(
@@ -52,9 +48,7 @@ class DbMediumIncrementsTest extends RuleTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function helperCanBeUsed(): void
     {
         $this->assertValidates(10, DbRules::mediumIncrements());

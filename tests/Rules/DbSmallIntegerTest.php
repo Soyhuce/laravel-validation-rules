@@ -3,17 +3,15 @@
 namespace Soyhuce\Rules\Tests\Rules;
 
 use Illuminate\Http\UploadedFile;
+use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\Test;
 use Soyhuce\Rules\DbRules;
 use Soyhuce\Rules\Rules\DbSmallInteger;
 
-/**
- * @coversNothing
- */
+#[CoversNothing]
 class DbSmallIntegerTest extends RuleTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function theRuleCorrectlyValidates(): void
     {
         $this->assertValidates(10, new DbSmallInteger());
@@ -30,9 +28,7 @@ class DbSmallIntegerTest extends RuleTestCase
         $this->assertNotValidates(null, ['required', new DbSmallInteger()]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function messagesAreCorrectlyHandled(): void
     {
         $this->assertFailsWithMessage(
@@ -52,17 +48,13 @@ class DbSmallIntegerTest extends RuleTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function helperCanBeUsed(): void
     {
         $this->assertValidates(10, DbRules::smallInteger());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function postgresRangeIsCorrect(): void
     {
         // TODO

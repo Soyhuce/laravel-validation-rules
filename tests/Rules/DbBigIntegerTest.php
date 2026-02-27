@@ -2,17 +2,15 @@
 
 namespace Soyhuce\Rules\Tests\Rules;
 
+use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\Test;
 use Soyhuce\Rules\DbRules;
 use Soyhuce\Rules\Rules\DbBigInteger;
 
-/**
- * @coversNothing
- */
+#[CoversNothing]
 class DbBigIntegerTest extends RuleTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function theRuleCorrectlyValidates(): void
     {
         // -9223372036854775808 to 9223372036854775807
@@ -26,9 +24,7 @@ class DbBigIntegerTest extends RuleTestCase
         $this->assertNotValidates('-9223372036854775808', new DbBigInteger());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function helperCanBeUsed(): void
     {
         $this->assertValidates(10, DbRules::bigInteger());

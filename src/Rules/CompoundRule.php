@@ -8,7 +8,7 @@ use Illuminate\Validation\ConditionalRules;
 use IteratorAggregate;
 
 /**
- * @implements \IteratorAggregate<int, string>
+ * @implements IteratorAggregate<int, string>
  */
 abstract class CompoundRule extends ConditionalRules implements IteratorAggregate
 {
